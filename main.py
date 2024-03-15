@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters.command import Command
 from aiogram.enums import ParseMode
 from aiogram.types import BotCommand
-from config import TOKEN
+from root import TOKEN
 from buttons import button, button_boy, button_girl, inlineBtn2
 from inline_button import *
 from images import *
