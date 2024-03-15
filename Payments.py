@@ -1052,7 +1052,7 @@ async def pre_checkout_query39(pre_checkout_query39: PreCheckoutQuery, bot: Bot)
 async def order_40(call: types.CallbackQuery, bot: Bot):
     await bot.send_invoice(call.from_user.id,
                            title="Oyoq kiyim 👠",
-                           description="O'g'il bolalar uchun ",
+                           description="Qiz bolalar uchun ",
                            provider_token=PAY_TOKEN,
                            currency='UZS',
                            photo_url="https://i.postimg.cc/265vWhxv/IMG-20240210-111103.jpg",
@@ -1071,8 +1071,8 @@ async def order_40(call: types.CallbackQuery, bot: Bot):
                            )
 
 
-async def pre_checkout_query20(pre_checkout_query20: PreCheckoutQuery, bot: Bot):
-    await bot.answer_pre_checkout_query(pre_checkout_query20.id, ok=True)
+async def pre_checkout_query40(pre_checkout_query40: PreCheckoutQuery, bot: Bot):
+    await bot.answer_pre_checkout_query(pre_checkout_query40.id, ok=True)
 
 
 
