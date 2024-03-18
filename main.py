@@ -1,11 +1,12 @@
 import asyncio
 import logging
-from aiogram import Bot, Dispatcher, types, F
+import openpyxl
+from aiogram import Dispatcher, F
 from aiogram.filters.command import Command
 from aiogram.enums import ParseMode
-from aiogram.types import BotCommand
+from aiogram.types import BotCommand, Message
 from root import TOKEN
-from buttons import button, button_boy, button_girl, inlineBtn2
+from buttons import button, button_boy, button_girl
 from inline_button import *
 from images import *
 from Payments import *
@@ -13,11 +14,24 @@ from Payments import *
 
 dp = Dispatcher()
 
+workbook = openpyxl.Workbook()
+
+sheet = workbook.active
 
 
-@dp.message(Command("start"))
+sheet['A1'] = "FullName"
+sheet['B1'] = "UserId"
+count = 1
+
+
+@dp.message(Command("start")) # noqa
 async def cmd_start(message: types.Message):
     await message.answer(f"<b>Salom Hurmatli {message.from_user.full_name} Mijoz BOSS BABY YANGIYOL BOTiga xush kelibsiz siz bizning dokondan ozingizga yoqgan kiyimlarni topishingiz mumkun. Tanlang (O'G'IL) yoki (QIZ)</b>", parse_mode=ParseMode.HTML, reply_markup=button) # noqa
+
+    s = count + 1
+    sheet['A2'] = message.from_user.full_name
+    sheet['B2'] = message.from_user.id
+    workbook.save('User_data.xlsx')
 
     @dp.message(F.text == "O'g'il 🙍‍♂️")
 
